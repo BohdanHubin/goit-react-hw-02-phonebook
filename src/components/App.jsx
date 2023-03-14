@@ -21,6 +21,19 @@ state = {
 
 addContact = ({ name, number }) => {
 
+  const normalizedName = name.toLowerCase();
+
+    let isAdd = false;
+    this.state.contacts.forEach(element => {
+      if (element.name.toLowerCase() === normalizedName) {
+        alert(`${name} is already in contacts`);
+        isAdd = true;
+      }
+    });
+
+    if (isAdd) {
+      return;
+    }
     const contact = {
       id: nanoid(),
       name: name,
